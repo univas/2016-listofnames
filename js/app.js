@@ -2,12 +2,27 @@ var names = ['Alison', 'Fabiano', 'Luiz', 'Welligton'];
 
 function addAllNames() {
     for (var i = 0; i < names.length; i++) {
-        var li = createListItem(names[i]);
-        addNameToList(li);
+       addNameToList(names[i]);
     }
 }
 
-function addNameToList(li) {
+function setForm() {
+    var form = document.getElementById('form-name');
+    form.addEventListener('submit', function(e) {
+        console.log('Trigged');
+        var inputName = document.getElementById('name');
+        addNameToList(inputName.value);
+        inputName.value = "";
+        e.preventDefault();
+    });    
+}
+
+function addNameToList(name) {
+  var li = createListItem(name);
+  addToList(li);
+}
+
+function addToList(li) {
   var ul = document.getElementById('list-name');
   ul.appendChild(li);
 }
@@ -19,4 +34,5 @@ function createListItem(name) {
 }
 
 //init
+setForm();
 addAllNames();
