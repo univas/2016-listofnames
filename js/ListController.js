@@ -22,27 +22,7 @@ var ListController = {
     
     addName: function(name) {
         ListService.addName(name);
-        //TODO move it to HTMLService.js
-        ListController.displayAddedName(name);
-    },
-    
-    //TODO move it to HTMLService.js
-    displayAddedName: function(text) {
-       var li = ListController.createListItem(text);
-       ListController.addToList(li);
-    },
-    
-    //TODO move it to HTMLService.js
-    createListItem: function (text) {
-        var li = document.createElement('li');
-        li.innerHTML = text;
-        return li;
-    },
-    
-    //TODO move it to HTMLService.js
-    addToList: function (listItem) {
-        var ul = document.getElementById('list-name');
-        ul.appendChild(listItem);
+        HTMLService.displayAddedName(name);
     }
     
 };
