@@ -2,22 +2,27 @@ var ListController = {
     
     init: function(params) {
         ListController.setForm();
+        ListController.displayNames();
     },
     
     setForm: function () {
         var form = document.getElementById('form-name');
-        form.addEventListener('submit', ListController.handleEventSubmit);
+        form.addEventListener('submit', ListController.eventSubmitHandler);
     },
     
-    handleEventSubmit: function (event) {
+    eventSubmitHandler: function (event) {
         console.log('Event submit was trigged!');
         var inputName = document.getElementById('name');
         
         ListController.addName(inputName.value);
         
         inputName.value = "";
-        //we need this to avoid the form submittion to a server
-        event.preventDefault();
+        event.preventDefault(); //we need this to avoid the form submittion to a server
+    },
+    
+    displayNames: function() {
+        var names = ListService.getList();
+        names.forEach(HTMLService.displayAddedName);
     },
     
     addName: function(name) {
