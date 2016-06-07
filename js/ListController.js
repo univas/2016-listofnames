@@ -1,36 +1,43 @@
-var ListController = {
+var ListController = (function () {
+
+    //public
+    function init() {
+        _setForm();
+        _displayNames();
+    }
     
-    init: function(params) {
-        ListController.setForm();
-        ListController.displayNames();
-    },
-    
-    setForm: function () {
+    //private
+    function _setForm() {
         var form = document.getElementById('form-name');
-        form.addEventListener('submit', ListController.eventSubmitHandler);
-    },
+        form.addEventListener('submit', _eventSubmitHandler);
+    }
     
-    eventSubmitHandler: function (event) {
+    function _eventSubmitHandler() {
         console.log('Event submit was trigged!');
         var inputName = document.getElementById('name');
-        
-        ListController.addName(inputName.value);
-        
-        inputName.value = "";
+
+        _addName(inputName.value);
+
+        inputName.value = ""; //clean input name
         event.preventDefault(); //we need this to avoid the form submittion to a server
-    },
+    }
     
-    displayNames: function() {
+    function _displayNames() {
         var names = ListService.getList();
         names.forEach(HTMLService.displayAddedName);
-    },
+    }
     
-    addName: function(name) {
+    function _addName(name) {
         ListService.addName(name);
         HTMLService.displayAddedName(name);
     }
     
-};
+    //making public method accessable from outside world
+    return {
+        "init": init
+    };
+    
+})();
 
 //initialization
 ListController.init();
