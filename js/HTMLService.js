@@ -1,19 +1,26 @@
-var HTMLService = {
+var HTMLService = (function () {
 
-    displayAddedName: function(text) {
-       var listItem = HTMLService.createListItem(text);
-       HTMLService.addToList(listItem);
-    },
-    
-    createListItem: function (text) {
+    //private
+    function _createListItem(text) {
         var listItem = document.createElement('li');
         listItem.innerHTML = text;
         return listItem;
-    },
-    
-    addToList: function (listItem) {
+    }
+
+    function _addToList(listItem) {
         var ul = document.getElementById('list-name');
         ul.appendChild(listItem);
     }
+
+    //public
+    function displayAddedName(name) {
+        var listItem = _createListItem(name);
+        _addToList(listItem);
+    }
     
-};
+    //making public method accessable from outside world
+    return {
+        "displayAddedName": displayAddedName
+    };
+
+})();
