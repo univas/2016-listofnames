@@ -2,6 +2,7 @@ var ListController = {
     
     init: function(params) {
         ListController.setForm();
+        ListController.displayNames();
     },
     
     setForm: function () {
@@ -20,6 +21,11 @@ var ListController = {
         ListService.addName(name);
         HTMLService.displayAddedName(name);
     },
+    
+    displayNames: function() {
+        var names = ListService.getList();
+        names.forEach(HTMLService.displayAddedName);
+    }
     
 };
 
