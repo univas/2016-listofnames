@@ -4,7 +4,7 @@ A JavaScript app to add name to a list of names and save to HTML5 localStorage.
 
 You can follow the changes [here](https://github.com/univas/list-of-names/issues/1).
 
-Live demo: [http://univas.github.io/list-of-names/](http://univas.github.io/list-of-names/)
+Live demo: [http://univas.github.io/2016-listofnames/](http://univas.github.io/2016-listofnames)
 
 ## Immediately-Invoked Function Expression (IIFE)
 
